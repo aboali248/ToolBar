@@ -1,1 +1,9 @@
-{"opacity": 85, "ontop": true}
+{
+  "opacity": 85,
+  "ontop": true,
+  "layout": "h",
+  "mini": false,
+  "startup": false,
+  "x": null,
+  "y": 16
+}
