@@ -15,5 +15,7 @@ PyInstaller.__main__.run([
     "--collect-all=PIL",
     "--hidden-import=wmi",
     "--hidden-import=psutil",
+    "--hidden-import=pythoncom",
+    "--hidden-import=pywintypes",
 ])
 print("Done: dist/FloatBar.exe")

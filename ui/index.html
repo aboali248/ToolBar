@@ -1,87 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FloatBar</title>
-<style>html,body{background:transparent !important;background-color:rgba(0,0,0,0) !important;}</style>
-<script>window.__errs=[];window.addEventListener('error',function(e){try{window.__errs.push(String((e&&e.message)||e))}catch(_){}});</script>
-<link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0b10">
+  <title>FloatBar</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- SVG icons (بدل الإيموجي) -->
-  <svg width="0" height="0" style="position:absolute">
-    <defs>
-      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 21V9m0 0L7.5 13.5M12 9l4.5 4.5M4 4h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-temp" viewBox="0 0 24 24"><path d="M10 4a2 2 0 0 1 4 0v9.3a4.5 4.5 0 1 1-4 0V4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.5" r="1.6" fill="currentColor"/></symbol>
-      <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-      <symbol id="i-ram" viewBox="0 0 24 24"><path d="M4 7h16v10H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 11v2M11 11v2M15 11v4M7 17v1M17 17v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-      <symbol id="i-batt" viewBox="0 0 24 24"><rect x="2" y="8" width="17" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 11v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect id="batt-fill" x="4.5" y="10.5" width="8" height="4" rx="1" fill="currentColor"/></symbol>
-      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
-      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 8h10M18 8h2M4 16h4M12 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="8" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="16" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
-      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
-      <symbol id="i-grip" viewBox="0 0 24 24"><circle cx="9" cy="6" r="1.3" fill="currentColor"/><circle cx="15" cy="6" r="1.3" fill="currentColor"/><circle cx="9" cy="12" r="1.3" fill="currentColor"/><circle cx="15" cy="12" r="1.3" fill="currentColor"/><circle cx="9" cy="18" r="1.3" fill="currentColor"/><circle cx="15" cy="18" r="1.3" fill="currentColor"/></symbol>
-      <symbol id="i-orient" viewBox="0 0 24 24"><path d="M7 4v13m0 0l-3-3m3 3l3-3M17 20V7m0 0l-3 3m3-3l3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-      <symbol id="i-fold" viewBox="0 0 24 24"><path d="M6 14l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    </defs>
+  <svg class="icon-library" aria-hidden="true" focusable="false">
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16" />
+    </symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24">
+      <path d="M12 21V9m0 0L7.5 13.5M12 9l4.5 4.5M4 4h16" />
+    </symbol>
+    <symbol id="i-temperature" viewBox="0 0 24 24">
+      <path d="M10 14.2V5a2 2 0 1 1 4 0v9.2a4.5 4.5 0 1 1-4 0Z" />
+      <path d="M12 11v6" />
+      <circle cx="12" cy="18" r="1.5" />
+    </symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24">
+      <rect x="6" y="6" width="12" height="12" rx="2" />
+      <path d="M9 2v4m6-4v4m-6 12v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4" />
+    </symbol>
+    <symbol id="i-memory" viewBox="0 0 24 24">
+      <path d="M4 7h16v10H4zM7 11v2m4-2v2m4-2v4M7 17v2m10-2v2" />
+    </symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24">
+      <rect x="2.5" y="7" width="17" height="10" rx="2.5" />
+      <path d="M21 10v4" />
+      <rect class="battery-fill" x="5" y="9.5" width="0" height="5" rx="1" />
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24">
+      <path d="m13 2-9 12h6l-1 8 11-13h-7l1-7Z" />
+    </symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24">
+      <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z" />
+      <path d="m19.4 15 .1.1 1.1.9-1.5 2.6-1.4-.6a8 8 0 0 1-1.6.9l-.2 1.5h-3l-.3-1.5a8 8 0 0 1-1.6-.9l-1.4.6-1.5-2.6 1.2-.9a7 7 0 0 1 0-1.8l-1.2-.9 1.5-2.6 1.4.6a8 8 0 0 1 1.6-.9l.3-1.5h3l.2 1.5a8 8 0 0 1 1.6.9l1.4-.6 1.5 2.6-1.1.9a7 7 0 0 1-.1 1.7Z" />
+    </symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24">
+      <path d="M5 12h14" />
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="m6 6 12 12M18 6 6 18" />
+    </symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24">
+      <circle cx="8" cy="6" r="1" /><circle cx="16" cy="6" r="1" />
+      <circle cx="8" cy="12" r="1" /><circle cx="16" cy="12" r="1" />
+      <circle cx="8" cy="18" r="1" /><circle cx="16" cy="18" r="1" />
+    </symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24">
+      <rect x="4" y="5" width="16" height="14" rx="2" />
+      <path d="M12 5v14M4 12h16" />
+    </symbol>
+    <symbol id="i-fold" viewBox="0 0 24 24">
+      <path d="m6 14 6-6 6 6" />
+    </symbol>
+    <symbol id="i-speed" viewBox="0 0 24 24">
+      <path d="M13 2 4 14h6l-1 8 11-13h-7l1-7Z" />
+    </symbol>
   </svg>
 
-  <!-- شريط عائم بدون خلفية -->
-  <div id="bar">
-   <div class="bar-main">
-    <div id="drag-handle" title="اسحب للتحريك"><svg><use href="#i-grip"/></svg></div>
+  <main id="bar" aria-label="لوحة مراقبة النظام">
+    <div class="bar-main">
+      <div id="drag-handle" class="drag-handle" title="اسحب لتحريك اللوحة"
+           aria-label="اسحب لتحريك اللوحة">
+        <svg class="icon"><use href="#i-grip"></use></svg>
+      </div>
 
-    <div class="stats">
-      <div class="chip net" title="سرعة النت الحالية">
-        <span class="net-cols">
-          <span class="net-row down"><svg><use href="#i-down"/></svg><span id="down">0</span></span>
-          <span class="net-row up"><svg><use href="#i-up"/></svg><span id="up">0</span></span>
+      <section class="stats" aria-label="مؤشرات النظام">
+        <div class="chip net-chip" id="net-chip" title="سرعة الشبكة الحالية">
+          <span class="net-values">
+            <span class="net-row down">
+              <svg class="icon"><use href="#i-download"></use></svg>
+              <span class="metric" id="down" data-value="0">0 B/s</span>
+            </span>
+            <span class="net-row up">
+              <svg class="icon"><use href="#i-upload"></use></svg>
+              <span class="metric" id="up" data-value="0">0 B/s</span>
+            </span>
+          </span>
+        </div>
+
+        <div class="chip optional-chip temperature-chip" id="temp-chip" title="حرارة المعالج">
+          <svg class="icon"><use href="#i-temperature"></use></svg>
+          <span class="metric"><span id="temp">--</span><small>°C</small></span>
+        </div>
+
+        <div class="chip optional-chip usage-chip" title="استخدام المعالج">
+          <svg class="icon"><use href="#i-cpu"></use></svg>
+          <span class="metric"><span id="cpu" data-value="0">0</span><small>%</small></span>
+          <span class="meter" aria-hidden="true"><span id="cpu-bar"></span></span>
+        </div>
+
+        <div class="chip optional-chip usage-chip" title="استخدام الذاكرة">
+          <svg class="icon"><use href="#i-memory"></use></svg>
+          <span class="metric"><span id="ram" data-value="0">0</span><small>%</small></span>
+          <span class="meter" aria-hidden="true"><span id="ram-bar"></span></span>
+        </div>
+
+        <div class="chip optional-chip battery-chip" id="battery-chip" title="حالة البطارية">
+          <svg class="icon battery-icon"><use href="#i-battery"></use></svg>
+          <svg class="icon charge-icon" aria-hidden="true"><use href="#i-bolt"></use></svg>
+          <span class="metric"><span id="battery" data-value="0">--</span><small id="battery-unit"></small></span>
+        </div>
+      </section>
+
+      <nav class="controls" aria-label="إجراءات اللوحة">
+        <button id="btn-settings" class="control-button" type="button"
+                title="الإعدادات" aria-label="الإعدادات" aria-expanded="false">
+          <svg class="icon"><use href="#i-settings"></use></svg>
+        </button>
+        <button id="btn-hide" class="control-button" type="button"
+                title="إخفاء مؤقت" aria-label="إخفاء مؤقت">
+          <svg class="icon"><use href="#i-minus"></use></svg>
+        </button>
+        <button id="btn-close" class="control-button close-button" type="button"
+                title="خروج نهائي" aria-label="خروج نهائي">
+          <svg class="icon"><use href="#i-close"></use></svg>
+        </button>
+      </nav>
+    </div>
+
+    <section id="panel" class="settings-panel" aria-label="إعدادات النظام" hidden>
+      <header class="panel-header">
+        <span class="status-dot" aria-hidden="true"></span>
+        <h1>إعدادات النظام</h1>
+        <span class="version-badge">v2.0.4-Pro</span>
+        <button id="btn-panel-close" class="panel-close" type="button"
+                title="إغلاق الإعدادات" aria-label="إغلاق الإعدادات">
+          <svg class="icon"><use href="#i-close"></use></svg>
+        </button>
+      </header>
+
+      <div class="opacity-heading">
+        <label for="opacity">شفافية اللوحة</label>
+        <output id="opacity-value" for="opacity">85%</output>
+      </div>
+      <input id="opacity" class="opacity-slider" type="range"
+             min="10" max="100" value="85" aria-label="شفافية اللوحة">
+
+      <div class="utility-grid" aria-label="أدوات اللوحة">
+        <button id="btn-test" class="utility-button" type="button">
+          <svg class="icon"><use href="#i-speed"></use></svg>
+          <span>اختبار السرعة</span>
+        </button>
+        <button id="btn-orient" class="utility-button" type="button" aria-pressed="false">
+          <svg class="icon rotate-icon"><use href="#i-layout"></use></svg>
+          <span id="layout-label">تخطيط عمودي</span>
+        </button>
+        <button id="btn-fold" class="utility-button" type="button" aria-pressed="false">
+          <svg class="icon fold-icon"><use href="#i-fold"></use></svg>
+          <span id="fold-label">وضع الطي</span>
+        </button>
+      </div>
+      <div id="speed-result" class="result-bubble" role="status" aria-live="polite" hidden></div>
+
+      <label class="switch-row" for="ontop">
+        <span>فوق الجميع</span>
+        <span class="switch">
+          <input id="ontop" type="checkbox" checked>
+          <span class="switch-track" aria-hidden="true"></span>
         </span>
-      </div>
-      <div class="chip opt" title="الحرارة">
-        <svg class="ico"><use href="#i-temp"/></svg>
-        <span class="val"><span id="temp">--</span><small>°</small></span>
-      </div>
-      <div class="chip opt" title="المعالج">
-        <svg class="ico"><use href="#i-cpu"/></svg>
-        <span class="val"><span id="cpu">0</span><small>%</small></span>
-        <span class="meter"><span id="cpu-bar"></span></span>
-      </div>
-      <div class="chip opt" title="الرام">
-        <svg class="ico"><use href="#i-ram"/></svg>
-        <span class="val"><span id="ram">0</span><small>%</small></span>
-        <span class="meter"><span id="ram-bar"></span></span>
-      </div>
-      <div class="chip opt" title="البطارية">
-        <svg class="ico"><use href="#i-batt"/></svg>
-        <span class="val"><span id="batt">--</span></span>
-      </div>
-    </div>
+      </label>
+      <label class="switch-row" for="startup">
+        <span>تشغيل تلقائي</span>
+        <span class="switch">
+          <input id="startup" type="checkbox">
+          <span class="switch-track" aria-hidden="true"></span>
+        </span>
+      </label>
+      <p id="app-status" class="app-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
 
-    <div class="controls">
-      <button id="btn-settings" title="الإعدادات"><svg><use href="#i-sliders"/></svg></button>
-      <button id="btn-hide" title="إخفاء في الأسفل"><svg><use href="#i-minus"/></svg></button>
-      <button id="btn-close" title="خروج"><svg><use href="#i-x"/></svg></button>
-    </div>
-   </div>
-
-    <div id="panel" class="hidden">
-      <div class="bub-head"><span class="dot"></span><b>الإعدادات</b><span class="ver">v8</span><button id="btn-panel-close" title="إغلاق"><svg><use href="#i-x"/></svg></button></div>
-      <div class="bub-row"><label>الشفافية</label><span id="op-val">85%</span></div>
-      <input id="opacity" type="range" min="0" max="100" value="85" />
-      <div class="row-btns">
-        <button id="btn-test" title="اختبار سرعة"><svg><use href="#i-bolt"/></svg><span>سرعة</span></button>
-        <button id="btn-orient" title="طولي / عرضي"><svg><use href="#i-orient"/></svg><span>طولي</span></button>
-        <button id="btn-fold" title="طي / فرد"><svg><use href="#i-fold"/></svg><span>طي</span></button>
-      </div>
-      <label class="switch-row"><span>دائماً في المقدمة</span><span class="switch"><input id="ontop" type="checkbox" checked /><i></i></span></label>
-      <div id="test-res" class="chat-in">اضغط زر البرق لقياس سرعة النت</div>
-    </div>
-  </div>
-
-<script src="js/api.js"></script>
-<script src="js/app.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

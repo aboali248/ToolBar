@@ -3,4 +3,5 @@ psutil>=5.9
 pystray>=0.19
 pillow>=10.0
 wmi>=1.5
+pywin32>=306; platform_system == "Windows"
 pyinstaller>=6.0
